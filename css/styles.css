@@ -9,6 +9,9 @@ h6,
 p {
     margin: 0;
 }
+   
+p {
+letter-spacing: 0.02em;     }
 
 ul,
 ol {
@@ -65,6 +68,11 @@ img {
    max-width: 1440px;
    border-bottom: 1px solid #e7e9fc;
    margin: 0 auto;
+   box-shadow:
+        0px 2px 1px rgba(46, 47, 66, 0.08),
+        0px 1px 1px rgba(46, 47, 66, 0.16),
+        0px 1px 6px rgba(46, 47, 66, 0.08);
+    background-color: #ffffff;
 }
 
 .header-container {
@@ -126,7 +134,7 @@ img {
 .navigation-link:focus {
     color: #404bbf;
 }
-.navigation-link.active {
+.navigation-link--active {
     color: #404bbf;
     position: relative;
     transition-property: color;
@@ -138,8 +146,8 @@ img {
     content: "";
     position: absolute;
     left: 0;
-    bottom: 0;
-    height: 2px;
+    bottom: -1px;
+    height: 4px;
     width: 100%;
     background-color: #404bbf;
     border-radius: 2px;
@@ -163,6 +171,7 @@ img {
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-link:hover,
@@ -173,6 +182,8 @@ img {
 /* Hero section styles start */
 
 .hero-section {
+    max-width: 1440px;
+    margin: 0 auto;
     background-image: linear-gradient(rgba(46, 47, 66, 0.7),
             rgba(46, 47, 66, 0.7)), url(../images/people-office.jpg);
     background-size: cover;
@@ -185,6 +196,7 @@ img {
 }
 .hero-container {
     max-width: 1440px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,7 +279,7 @@ img {
 }
     
 .icon {
-    fill: #2e2f42;
+    fill: var(--icon-color, #f4f4fd);
 }
     
 .features-subtitle {
@@ -476,6 +488,38 @@ img {
     color: #434455;
     margin: 0;
 }
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    /* додаємо, щоб було видно, що можна клікнути */
+}
+
+.image-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.image-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px 32px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--text-color, #f4f4fd);
+    background-color: #4d5ae5;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    overflow-y: auto;
+  
+}
 /* Portfolio section styles end */
 /* Footer styles start */
 
@@ -491,13 +535,14 @@ img {
     padding-left: 15px;
     padding-right: 15px;
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     gap: 120px;
     /* відступ між лівим і правим блоками */
 }
 
 .footer-left {
-    max-width: 264px; }
+    margin-right: 120px;
+}
 .footer-logo {
     font-family: "Raleway", sans-serif;
     font-weight: 700;
@@ -546,7 +591,6 @@ img {
 }
     
 .footer-social-link {
-    display: inline-flex;
     justify-content: center;
     align-items: center;
     width: 40px;
@@ -558,6 +602,7 @@ img {
     transition-property: background-color;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
 }
     
 .footer-social-link:hover,
